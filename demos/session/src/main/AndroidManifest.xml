@@ -29,6 +29,14 @@
       android:theme="@style/Theme.Media3Demo"
       tools:replace="android:name">
 
+    <receiver
+      android:exported="true"
+      android:name="androidx.media3.session.MediaButtonReceiver">
+      <intent-filter>
+        <action android:name="android.intent.action.MEDIA_BUTTON" />
+      </intent-filter>
+    </receiver>
+
     <activity
         android:name=".MainActivity"
         android:exported="true">

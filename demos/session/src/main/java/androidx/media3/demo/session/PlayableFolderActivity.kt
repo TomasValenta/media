@@ -101,6 +101,13 @@ class PlayableFolderActivity : AppCompatActivity() {
       startActivity(intent)
     }
 
+    findViewById<View>(R.id.stop_button).setOnClickListener {
+      browser?.let { browser ->
+        browser.stop()
+        browser.clearMediaItems()
+      }
+    }
+
     findViewById<ExtendedFloatingActionButton>(R.id.open_player_floating_button)
       .setOnClickListener {
         // Start the session activity that shows the playback activity. The System UI uses the same

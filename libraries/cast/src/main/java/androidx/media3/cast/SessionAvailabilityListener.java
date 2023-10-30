@@ -24,6 +24,9 @@ public interface SessionAvailabilityListener {
   /** Called when a cast session becomes available to the player. */
   void onCastSessionAvailable();
 
+  /** Called when a cast session has been suspended. */
+  default void onCastSessionSuspended() {}
+
   /** Called when the cast session becomes unavailable. */
   void onCastSessionUnavailable();
 }

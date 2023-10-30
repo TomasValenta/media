@@ -1406,8 +1406,11 @@ public final class CastPlayer extends BasePlayer {
     }
 
     @Override
-    public void onSessionSuspended(CastSession castSession, int i) {
-      setRemoteMediaClient(null);
+    public void onSessionSuspended(CastSession castSession, int error) {
+      setRemoteMediaClient(castSession.getRemoteMediaClient());
+      if (sessionAvailabilityListener != null) {
+        sessionAvailabilityListener.onCastSessionSuspended();
+      }
     }
 
     @Override

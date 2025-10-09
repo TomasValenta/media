@@ -35,6 +35,7 @@ import androidx.media3.common.Player
 import androidx.media3.common.listen
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.demo.session.service.R
+import androidx.media3.demo.session.source.FakeMediaSourceFactory
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.util.EventLogger
 import androidx.media3.session.MediaConstants
@@ -141,6 +142,7 @@ open class DemoPlaybackService : MediaLibraryService() {
     val player =
       ExoPlayer.Builder(this)
         .setAudioAttributes(AudioAttributes.DEFAULT, /* handleAudioFocus= */ true)
+        .setMediaSourceFactory(FakeMediaSourceFactory(this))
         .build()
     player.addAnalyticsListener(EventLogger())
     CoroutineScope(Dispatchers.Unconfined).launch {

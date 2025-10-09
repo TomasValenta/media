@@ -1171,6 +1171,9 @@ import java.util.concurrent.CopyOnWriteArraySet;
         != playbackInfo.periodId.windowSequenceNumber) {
       return playbackInfo.timeline.getWindow(getCurrentMediaItemIndex(), window).getDurationMs();
     }
+
+    // Note: I don't know what's causing it, but when playback "goes stuck"
+    // playbackInfo.bufferedPositionUs starts returning C.TIME_UNSET
     long contentBufferedPositionUs = playbackInfo.bufferedPositionUs;
     if (playbackInfo.loadingMediaPeriodId.isAd()) {
       Timeline.Period loadingPeriod =

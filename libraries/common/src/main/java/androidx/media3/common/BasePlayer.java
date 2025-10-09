@@ -321,7 +321,10 @@ public abstract class BasePlayer implements Player {
     long duration = getDuration();
     return position == C.TIME_UNSET || duration == C.TIME_UNSET
         ? 0
-        : duration == 0 ? 100 : Util.constrainValue(Util.percentInt(position, duration), 0, 100);
+        // Note: This line cause crash from version 1.8.0, but it is just a consequence of the unexpectedly low negative buffered position value,
+        // the previous implementation in this case returns zero.
+        //: duration == 0 ? 100 : Util.constrainValue(Util.percentInt(position, duration), 0, 100); // 1.8.0 implementation
+        : duration == 0 ? 100 : Util.constrainValue((int) ((position * 100) / duration), 0, 100); // previous implementation
   }
 
   /**

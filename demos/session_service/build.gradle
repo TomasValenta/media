@@ -72,6 +72,7 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-guava:1.9.0'
     implementation 'com.google.protobuf:protobuf-java:4.31.1'
     implementation project(modulePrefix + 'lib-common-ktx')
+    implementation project(modulePrefix + 'lib-datasource-okhttp')
     implementation project(modulePrefix + 'lib-exoplayer')
     implementation project(modulePrefix + 'lib-exoplayer-dash')
     implementation project(modulePrefix + 'lib-exoplayer-hls')
